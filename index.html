@@ -6,6 +6,7 @@
     <title>Privacy Policy - WaveMerge</title>
     <style>
         body {
+            box-sizing: border-box;
             max-width: 900px;
             margin: 0 auto;
             padding: 24px;
@@ -14,7 +15,9 @@
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.65;
         }
+        *, *::before, *::after { box-sizing: inherit; }
         main {
+            width: 100%;
             background: #ffffff;
             border: 1px solid #dcebff;
             border-radius: 16px;
@@ -22,13 +25,89 @@
         }
         h1, h2, h3 { color: #1565d8; line-height: 1.25; }
         h1 { margin-top: 0; border-bottom: 1px solid #dcebff; padding-bottom: 12px; }
-        table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
-        th, td { border: 1px solid #dcebff; padding: 10px; text-align: left; vertical-align: top; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; table-layout: fixed; }
+        th, td {
+            border: 1px solid #dcebff;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .details-table th { width: 32%; }
+        .permissions-table th:first-child,
+        .permissions-table td:first-child { width: 32%; }
         th { background: #eef5ff; }
-        code { background: #eef5ff; padding: 2px 5px; border-radius: 4px; }
-        a { color: #1565d8; }
+        code { background: #eef5ff; padding: 2px 5px; border-radius: 4px; white-space: normal; }
+        a { color: #1565d8; overflow-wrap: anywhere; }
         .muted { color: #5f6b7a; }
         .footer { margin-top: 32px; border-top: 1px solid #dcebff; padding-top: 16px; color: #5f6b7a; font-size: 0.92em; }
+
+        @media (max-width: 640px) {
+            body {
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                background: #ffffff;
+                font-size: 15px;
+                line-height: 1.6;
+            }
+            main {
+                min-height: 100vh;
+                border: 0;
+                border-radius: 0;
+                padding: 20px 16px 28px;
+            }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.25rem; margin-top: 28px; }
+            h3 { font-size: 1.05rem; }
+            ul { padding-left: 20px; }
+            table {
+                display: block;
+                border-collapse: separate;
+                border-spacing: 0;
+                table-layout: auto;
+                margin: 14px 0 24px;
+            }
+            .details-table tbody,
+            .details-table tr,
+            .details-table th,
+            .details-table td,
+            .permissions-table tbody,
+            .permissions-table tr,
+            .permissions-table td {
+                display: block;
+                width: 100%;
+            }
+            .details-table tr,
+            .permissions-table tr {
+                border: 1px solid #dcebff;
+                border-radius: 12px;
+                margin-bottom: 10px;
+                overflow: hidden;
+                background: #ffffff;
+            }
+            .details-table th,
+            .permissions-table td:first-child {
+                border: 0;
+                border-bottom: 1px solid #dcebff;
+                background: #eef5ff;
+                padding: 9px 12px;
+                font-size: 0.82rem;
+                font-weight: 700;
+            }
+            .details-table td,
+            .permissions-table td {
+                border: 0;
+                padding: 12px;
+            }
+            .permissions-table tr:first-child {
+                display: none;
+            }
+            .permissions-table td:first-child code {
+                font-weight: 700;
+            }
+        }
     </style>
 </head>
 <body>
@@ -41,7 +120,7 @@
         handles information when you use the WaveMerge mobile application.
     </p>
 
-    <table>
+    <table class="details-table">
         <tr>
             <th>App</th>
             <td>WaveMerge</td>
@@ -115,7 +194,7 @@
     </p>
 
     <h2>3. Android Permissions Used by WaveMerge</h2>
-    <table>
+    <table class="permissions-table">
         <tr>
             <th>Permission</th>
             <th>Purpose</th>
